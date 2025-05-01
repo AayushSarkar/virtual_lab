@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectile Motion Results</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'lab_simulator/style.css' %}">
+</head>
+<body>
+    <h1>Projectile Motion Results</h1>
+    
+    <h3>Initial Velocity: {{ velocity }} m/s</h3>
+    <h3>Launch Angle: {{ angle }} degrees</h3>
+    <h3>Time of Flight: {{ t_max }} seconds</h3>
+    
+    <h2>Observations</h2>
+    <table border="1">
+        <tr>
+            <th>Time (s)</th>
+            <th>X (m)</th>
+            <th>Y (m)</th>
+        </tr>
+        {% for obs in observations %}
+        <tr>
+            <td>{{ obs.0 }}</td>
+            <td>{{ obs.1 }}</td>
+            <td>{{ obs.2 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Projectile Trajectory</h2>
+    <img src="{{ plot_url }}" alt="Projectile Trajectory Plot">
+
+</body>
+</html>
